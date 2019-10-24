@@ -24,7 +24,8 @@ listInfo();
 listPrint();
 
 
-version oficial:
+version oficial:   /*la gracia es que cuando el usuario marque la funcion  
+ponga una palabra y se pushee, no que cargue la lista completa de una*/
 const array =[]
 const listAsk = () =>{
       let datos=prompt("deci una palabra");
