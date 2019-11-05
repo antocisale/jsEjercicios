@@ -73,15 +73,78 @@ test ('le paso "hola" me devuelve error', () => {
  * Observaciones: Pensar en ejercicio integrador de 
  * cargar personas.
  */
-test ('cargo tarea "prueba", "descripcion", y "done"', () =>{
-    const toDo = [];
-    const getTarea = ()=>{
-        let nombre = prompt('nombre');
-        let description =  prompt('descripcion');
-        let done = false;
+
+    let toDo = [];
+    let done=false;
+    const addTarea = (nombre, description, done)=>{
+        if (done==undefined){
+            done=false;
+        }
         toDo.push([nombre,description,done])
+        return toDo;
     }
-    expect(toDo).toContain(["prueba", "descripcion", "true"   
-        ])
+  
+    const searcher = (tarea) =>{
+        let tareaError = -1
+        for(let i = 0; i < toDo.length; i++){
+                if(toDo[i][0] == tarea){
+                    return i;
+                }
+            }
+            return tareaError;
+        };
+    const searchTarea = (tarea) =>{
+        let index = searcher(tarea);
+        if (index > -1){
+            return toDo[index];
+        }
+    }
+    const editTarea = (tarea, newTarea, newDescription) =>{
+        let index = searcher(tarea);
+        if (index > -1){
+            toDo[index][0] = newTarea;
+            toDo[index][1] = newDescription;
+            return toDo[index];
+        }
+    }
+
+test ('cargo tarea "prueba", "descripcion", y "done"', () =>{
+    expect(addTarea("prueba", "descripcion", false)).toContainEqual(["prueba", "descripcion", false 
+        ], )
 }
 )
+
+test ('cargo tarea "prueba 2", "descripcion 2", y "true"', () =>{
+    expect(addTarea("prueba 2", "descripcion 2", true)).toContainEqual(["prueba 2", "descripcion 2", true 
+        ], )
+}
+)
+
+test ('cargo tarea "prueba 3", "descripcion 3" sin informacion de si esta hecha o no', () =>{
+    expect(addTarea("prueba 3", "descripcion 3")).toContainEqual(["prueba 3", "descripcion 3", false 
+        ], )
+}
+)
+
+test ('busco tarea "prueba 3" y me devuelve el array completo', () =>{
+    addTarea("prueba 3", "descripcion 3", false);
+    expect(searchTarea("prueba 3")).toEqual(["prueba 3", "descripcion 3", false 
+        ], )
+}
+)
+
+test ('busco tarea "pruebas" y me devuelve error', () =>{
+    addTarea("prueba 3", "description 2", true);
+    expect(searchTarea("pruebas")).toBe(-1)
+}
+)
+
+test ('busco tarea "prueba 3" y edito nombre a "pruebaChange" y descripcion a "descriptionChange"', () =>{
+    addTarea("prueba 3", "description 2", true);
+    expect(editTarea("prueba 3", "pruebaChange", "pruebaDescription"))
+        .toContainEqual("pruebaChange", "pruebaDescription", false)
+}
+)
+beforeEach(()=>{
+    toDo=[]
+})
