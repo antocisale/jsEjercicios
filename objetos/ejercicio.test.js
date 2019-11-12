@@ -53,7 +53,7 @@ const delProduct=(id) =>{
     for (let item of listProducts){
         if (item.id ==id){
             listProducts.splice(item,1);
-            return listProducts.length;
+            return listProducts;
         }
     }
 }
@@ -87,6 +87,7 @@ const sumChart = () =>{
         totalChart += item.price;
         return totalChart;
     })
+    totalChart= totalChart.toFixed(2)
 }
 
 beforeEach(() => {
@@ -206,6 +207,6 @@ test('el valor total de mi carrito', () =>{
     addChart(1);
     addChart(3);
     sumChart();
-    expect(totalChart).toBe(205.84)
+    expect(totalChart).toBe("205.84")
 }
 );
