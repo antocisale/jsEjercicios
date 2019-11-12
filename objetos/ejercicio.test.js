@@ -47,6 +47,7 @@ const modProduct = (id, newTitle, newDesc, newPrice)=>{
             return item;
         }
     }
+        return "Id no encontrado";
 }
 
 const delProduct=(id) =>{
@@ -210,3 +211,14 @@ test('el valor total de mi carrito', () =>{
     expect(totalChart).toBe("205.84")
 }
 );
+
+test ('modificar un producto y que no lo encuentre', ()=>{
+    addProduct(1, "titulo", "descripcion", 25.8);
+    addProduct(2,"producto 2", "description 2", 44.68);
+    addProduct(3,"producto 3", "description 3", 67.68);
+    expect(modProduct(4, "titulonuevo", "description nueva", 54.24)).toBe("Id no encontrado")
+}
+);
+
+
+
