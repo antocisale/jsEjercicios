@@ -57,6 +57,7 @@ const delProduct=(id) =>{
             return listProducts;
         }
     }
+    return "Id no encontrado";
 }
 
 const addChart = (id) =>{
@@ -66,6 +67,7 @@ const addChart = (id) =>{
             return chart;
         }
     }
+    
 }
 
 const delChart = (id) =>{
@@ -220,5 +222,12 @@ test ('modificar un producto y que no lo encuentre', ()=>{
 }
 );
 
+test ('elminar un producto y que no lo encuentre', ()=>{
+    addProduct(1, "titulo", "descripcion", 25.8);
+    addProduct(2,"producto 2", "description 2", 44.68);
+    addProduct(3,"producto 3", "description 3", 67.68);
+    expect(delProduct(4)).toBe("Id no encontrado")
+}
+);
 
 
