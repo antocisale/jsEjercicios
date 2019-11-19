@@ -37,7 +37,7 @@ let libro ={
         },
     ],
     get info(){
-        return `${this.nombre} por ${this.autor} - ISBN ${this.ISBN}. Año ${this.anio}`
+        return `${this.nombre} escrito por ${this.autor} - ISBN ${this.ISBN}. Año ${this.anio}`
     },
     get promReview(){//opcion A//
         let prom = 0;
@@ -55,7 +55,26 @@ let libro ={
         let promedio = Math.round((prom/this.reviews.length)*10)/10; //va afuera porque sino lo ejecuta cada vez que se ejecuta forEach//
         return promedio;
     },
- }
+    __promReview: function(){
+        let suma= this.reviews.reduce((acumulador, review) => {
+            return review.valoracion +acumulador;
+        }, 0);
+        let prom = Math.round((suma/this.reviews.length)*10)/10;
+        return prom;
+      
+    },
+    agregaReview: function(nombre, review, valoracion){
+        if((valoracion>=1) &&(valoracion <=5)){
+            this.reviews.push({
+                nombre,
+                review,
+                valoracion
+            })
+        }else{
+            throw "la valoracion debe estar entre 1 y 5";
+        }
+    },
+ };
 
 
 
