@@ -44,6 +44,7 @@ class Producto {
         productos.agregar(this);
     }
 }
+
 class Perfume extends Producto {
     constructor(marca, precio, descuentos, id) {
         super("perfume", marca, precio, descuentos, id);
@@ -52,14 +53,15 @@ class Perfume extends Producto {
 class Chocolate extends Producto {
     constructor(porcentaje, leche, tipo, extras, marca, precio, descuentos, id) {
         super("chocolate", marca, precio, descuentos, id);
+        let extrasPosibles = ["almendras", "mani", "pasas", null];
         this.porcentaje = porcentaje;
         this.leche = leche;
         this.tipo = tipo;
-        this.extras = extras;
+        let extra = extrasPosibles.indexOf(extras);
+        if (extra > -1) {
+            this.extras = extras;
+        } else { throw "Error" };
     }
-    //extrasPosibles["almendras", "mani", "pasas", null];
-
-
 }
 
 class Auricular extends Producto {
@@ -95,6 +97,11 @@ const productos = {
             throw "Error: El id buscado no existe";
         }
         this.lista.splice(index, 1);
+    },
+    mostrar: function () {
+        this.lista.forEach(producto=>{
+            console.log(producto);
+        })
     }
 };
 

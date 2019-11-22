@@ -28,3 +28,13 @@ test ("agregar 3 productos al array de lista y que su largo sea 3",()=>{
     expect(productos.lista).toHaveLength(3);
 });
 
+test ("agrego un chocolate con mani y que lo tome", ()=>{
+    const chocoMani = new Chocolate(50, false, "con mani", "mani","milka",40,0,5);
+    expect(chocoMani.extras).toBe("mani")
+});
+
+test ("agrego un chocolate con clavos y me de error", ()=>{
+    
+    expect(()=>{const chocoClavos = new Chocolate(50,true, "con clavos","clavos", "milka",40,0,5);}).toThrow("Error")
+});
+
