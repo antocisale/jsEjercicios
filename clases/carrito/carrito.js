@@ -49,6 +49,9 @@ class Perfume extends Producto {
     constructor(marca, precio, descuentos, id) {
         super("perfume", marca, precio, descuentos, id);
     }
+    get info() {
+        return `Este es un ${this.tipoProd} marca ${this.marca}. Su costo es de $${this.precio} y tiene un descuento del ${this.descuentos}%. Su ID es ${this.id}`
+    }
 }
 class Chocolate extends Producto {
     constructor(porcentaje, leche, tipo, extras, marca, precio, descuentos, id) {
@@ -62,14 +65,40 @@ class Chocolate extends Producto {
             this.extras = extras;
         } else { throw "Error" };
     }
+    get leche() {
+        return this._leche;
+    }
+    set leche(leche) {
+        if (leche == false) {
+            return this._leche = "no tiene leche";
+        } return this._leche = "tiene leche";
+    }
+    get info() {
+        return `Este es un ${this.tipoProd} marca ${this.marca}. Tiene ${this.porcentaje}% de cacao, y ${this.leche}. Viene con ${this.extras}.  Su costo es de $${this.precio} y tiene un descuento del ${this.descuentos}%.`
+    }
 }
 
 class Auricular extends Producto {
-    constructor(wireless = false, tipo, marca, precio, descuentos, id) {
+    constructor(wireless, tipo, marca, precio, descuentos, id) {
         super("auriculares", marca, precio, descuentos, id);
+        let tipoAuris = ["cerrados", "abiertos"];
         this.wireless = wireless;
-        this.tipo = tipo;
+        let tipoAuri = tipoAuris.indexOf(tipo);
+        if (tipoAuri > -1) {
+            this.tipo = tipo;
+        } else { throw "Error" }
+    }
+    get wireless() {
+        return this._wireless;
+    }
+    set wireless(wireless) {
+        if (wireless == false) {
+            return this._wireless = "tienen cables";
+        } return this._wireless = "son wireless"
+    }
 
+    get info() {
+        return `Estos son ${this.tipoProd} ${this.tipo} marca ${this.marca} y ${this._wireless}. Su precio es de $${this.precio}, y tiene un descuento del ${this.descuentos}%. Su id es ${this.id}.`
     }
 }
 
@@ -78,31 +107,31 @@ const productos = {
     agregar: function (producto) {
         this.lista.push(producto)
     },
-    modificar: function (id, dataProducto) {
-        for (let producto of this.lista) {
-            if (producto.id == id) {
-                // ["titulo", "precio"]
-                let misKeys = Object.keys(dataProducto);
-                for (let key of misKeys) {
-                    producto[key] = dataProducto[key];
+    mostrar: function () {
+        for (let i = 0; i < this.lista.length; i++) {
+            return console.log(this.lista[i].info);
+        }
+    },
+    /*     modificar: function (id, dataProducto) {
+            for (let producto of this.lista) {
+                if (producto.id == id) {
+                    // ["titulo", "precio"]
+                    let misKeys = Object.keys(dataProducto);
+                    for (let key of misKeys) {
+                        producto[key] = dataProducto[key];
+                    }
                 }
             }
-        }
-    },
-    borrar: function (id) {
-        const index = this.lista.findIndex(producto => {
-            return producto.id == id;
-        });
-        if (index == -1) {
-            throw "Error: El id buscado no existe";
-        }
-        this.lista.splice(index, 1);
-    },
-    mostrar: function () {
-        this.lista.forEach(producto=>{
-            console.log(producto);
-        })
-    }
+        },
+        borrar: function (id) {
+            const index = this.lista.findIndex(producto => {
+                return producto.id == id;
+            });
+            if (index == -1) {
+                throw "Error: El id buscado no existe";
+            }
+            this.lista.splice(index, 1);
+        }, */
 };
 
 const carrito = {
@@ -114,23 +143,38 @@ const carrito = {
         producto.cantidad = cantidad;
         this.lista.push(producto);
     },
-    borrar: function (id) {
-        let index = this.lista.findIndex((producto) => {
-            return producto.id == id;
-        });
-        if (index == -1) {
-            throw "Error: Producto no existe en carrito";
+    mostrar: function () {
+        for (let producto of this.lista) {
+            console.log(producto.tipoProd, producto.marca, producto.cantidad)
         }
-        this.lista.splice(index, 1);
     },
+    /*     borrar: function (id) {
+            let index = this.lista.findIndex((producto) => {
+                return producto.id == id;
+            });
+            if (index == -1) {
+                throw "Error: Producto no existe en carrito";
+            }
+            this.lista.splice(index, 1);
+        }, */
     sumarPrecio: function () {
         let total = 0;
         for (let producto of this.lista) {
-            total += parseFloat(producto.precio * producto.cantidad);
+            if (producto.descuentos > 0) {
+                let dto = producto.descuentos / 100;
+                let valor = producto.precio - (producto.precio * dto);
+                total += valor;
+            } else if (producto.descuentos == 0) {
+                total += parseFloat(producto.precio);
+            }
         }
         return total;
+    },
+    descuento: function () {
+
     }
 };
+
 
 module.exports = {
     productos,
@@ -138,5 +182,6 @@ module.exports = {
     Producto,
     Perfume,
     Chocolate,
-    Auricular
+    Auricular,
+
 };

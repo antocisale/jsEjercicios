@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="checkbox" id="box1" value="opcion-1">
+
+    <br>
+    <input type="text" id="miInput" name="miInput"></input>
+    <br>
+    <div id ="miDiv">Hola! Soy un Div</div>
+    <div id ="div2">Div 2</div>
+    <script>
+        /**
+         * Crear un input de tipo checkbox.
+         * Escribir una funcion "toggleChecked" que 
+         * cambie el estado de clickeado a sin 
+         * clickear o viceversa.
+         */
+        const toggleChecked = () =>{
+                let check = document.querySelector("#box1");
+                check.checked ? check.checked = false : check.checked=true;
+            };
+        // 02
+        /**
+         * Dado el siguiente HTML
+        * cambiar el atributo name a miExInput
+        */
+        const changeName = () =>{
+            let input = document.querySelector("#miInput");
+            console.log(input.name);
+            input.name = "miExInput";
+            console.log(input.name);
+        };
+          // 03
+        /**
+         * Escribir un HTML con un div.
+         * Luego, por ID, modificar el contenido del DIV
+         * agregando una lista de 5 elementos.
+         * Una vez agregada la lista, agregar 
+         * programaticamente un numero a cada elemento
+         * 
+         * por ejemplo, si son 5 elementos deberia verse:
+         * 1
+         * 2
+         * 3
+         * 4
+         * 5
+         */
+        const changeDiv = () => {
+            let miDiv = document.querySelector("#miDiv");
+            miDiv.insertAdjacentHTML ("beforeend", "<ul><li></li><li></li><li></li><li></li><li></li></ul>");
+            addInfo();
+        };
+        const addInfo = () =>{
+            let li = document.getElementsByTagName("li");
+            let valor = 0;
+            for(let item of li){
+                valor ++;
+                item.innerHTML = valor;
+            }
+        };
+
+        const cambio =() =>{
+            let info = document.getElementById("#id");
+            let lista;
+            let valor =0;
+            lista.innerHTML = "<ul>";
+            for(i=0;i<5; i++){
+                lista+=(lista.innerHTML="<li>")+ valor++ +(lista.innerHTML="</li>");
+            }
+            if(i==5){
+                lista+=(lista.innerHTML = "</ul>")
+            }
+        }
+    </script>
+
+        </script>
+</body>
+</html>

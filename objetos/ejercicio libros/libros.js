@@ -58,7 +58,7 @@ let libro ={
     __promReview: function(){
         let suma= this.reviews.reduce((acumulador, review) => {
             return review.valoracion +acumulador;
-        }, 0);
+        }, 0); //valor inicial del acumulador//
         let prom = Math.round((suma/this.reviews.length)*10)/10;
         return prom;
       
