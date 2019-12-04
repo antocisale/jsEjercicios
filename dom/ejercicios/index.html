@@ -71,12 +71,11 @@
 
         const cambio = () => {
             let info = document.getElementById("hola");
-            let lista = "<ul>"
-            let valor = 1;
-            for (i = 0; i < 5; i++) {
-                lista += "<li>" + valor++ + "</li>";
+            let lista = "<ul>";
+            for (i = 1; i < 6; i++) {
+                lista += "<li>" + i + "</li>";
             }
-            if (i == 5) {
+            if (i == 6) {
                 lista += "</ul>"
             }
             info.innerHTML = lista;
@@ -93,12 +92,9 @@
         const changeTitle = () => {
             let inputValue = document.querySelector("#myButton");
             let h1Value = document.querySelector("#myH1");
-            h1Value.textContent= inputValue.value;
-            if (inputValue.value=="ya me cambié"){
-                inputValue.value = "Soy un título"
-            }else{
-                inputValue.value = "ya me cambié"
-            };
+            h1Value.textContent = inputValue.value;
+            inputValue.value == "ya me cambié" ? inputValue.value = "Soy un título" : inputValue.value =
+                "ya me cambié";
         }
     </script>
 </body>
