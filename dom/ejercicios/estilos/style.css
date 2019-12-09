@@ -1,0 +1,38 @@
+.fondo-1 {
+    background-color: aquamarine;
+    font-weight: bold;
+    color: indigo;
+    width:30%;
+    height:100px;
+    text-align:center;
+    font-size:40px;
+    line-height:1.5;
+    font-family:sans-serif;
+}
+
+.fondo-2 {
+    background-color: rgb(165, 16, 86);
+    font-weight: bold;
+    color: rgb(233, 185, 27);
+    width:30%;
+    height:100px;
+    text-align:right;
+    font-size:40px;
+    line-height:1.5;
+    font-family:serif;
+}
+
+.inactive{
+    color:red;
+}
+
+.active{
+    color:blue;
+}
+
+.gal{
+    list-style-type: none;
+    display: none;
+}
+
+
