@@ -73,7 +73,7 @@ const titleSize2 = (title, size) =>{
 }
 
  // 005
- /**
+/**
   * Crear una lista que contenga imagenes, de las 
   * cuales se va a mostrar solo una.
   * Crear una funcion que me permita ir cambiando
