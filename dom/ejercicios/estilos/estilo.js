@@ -14,8 +14,8 @@ const changeClass = () =>{
     }
 };
 
-const changeColor = (element, color) =>{
-    /* getComputedStyle(element); */
+const changeColor = (element, color = undefined) =>{
+    
     if (color == undefined){
         let red = Math.random()*256;
         let green = Math.random()*256;
@@ -23,7 +23,7 @@ const changeColor = (element, color) =>{
         color = `rgb(${red}, ${green}, ${blue})`;
     }
     element.style.background = color;
-    //element.setAttribute("style",`background-color: ${color}`);
+    
 }
 
  //002 
@@ -72,6 +72,19 @@ const titleSize2 = (title, size) =>{
     titulo.style.fontSize = size;
 }
 
+const increaseTitle = (titulo) => { 
+    let title = document.querySelector(titulo);
+    let fontSize = getComputedStyle(title).getPropertyValue("font-size"); //tambien puede ser .fontSize
+    fontSize= parseFloat(fontSize);
+    title.style.fontSize = fontSize + 10 + "px";
+}
+
+const decreaseTitle = (titulo) => { 
+    let title = document.querySelector(titulo);
+    let fontSize = getComputedStyle(title).getPropertyValue("font-size");
+    fontSize= parseFloat(fontSize);
+    title.style.fontSize = fontSize - 10 + "px";
+}
  // 005
 /**
   * Crear una lista que contenga imagenes, de las 
@@ -83,7 +96,7 @@ const titleSize2 = (title, size) =>{
 
 let index = 0;
 const changeImg = () =>{
-    let galleryImg = document.querySelectorAll("#gallery > li");
+    let galleryImg = document.querySelectorAll("#gallery > li"); //hago como que son children
     galleryImg[index].style.display ="none";
     index++;
     if(index == galleryImg.length){
