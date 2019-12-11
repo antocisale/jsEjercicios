@@ -34,12 +34,18 @@ const addLiCheck = () =>{
     return newCheck;
 };
 
-const addToDo = () =>{
+const addTarea = () =>{
     let toDo = document.querySelector("#tarea").value;
-    let list = document.querySelector("#lista");
     let newTarea = document.createElement("span");
     newTarea.innerHTML = toDo;
+    return newTarea;
+}
+const addToDo = () =>{
+
+    let list = document.querySelector("#lista");
+
     let newButton = addDelButton();
+    let newTarea = addTarea();
     let newCheck = addLiCheck();
     
     let newToDo = document.createElement("li");
@@ -53,11 +59,6 @@ const addToDo = () =>{
 
 const button = document.querySelector("#boton");
 button.addEventListener("click", addToDo);
-
-const delToDo = () =>{
-    let delTarea = document.querySelector("input");
-
-}
 
  // 002
 /**
