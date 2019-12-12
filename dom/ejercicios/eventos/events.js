@@ -41,19 +41,14 @@ const addTarea = () =>{
     return newTarea;
 }
 const addToDo = () =>{
-
     let list = document.querySelector("#lista");
-
     let newButton = addDelButton();
     let newTarea = addTarea();
     let newCheck = addLiCheck();
-    
     let newToDo = document.createElement("li");
-    
     newToDo.appendChild(newCheck);
     newToDo.appendChild(newTarea);
     newToDo.appendChild(newButton);
-    
     list.appendChild(newToDo);
 };
 
