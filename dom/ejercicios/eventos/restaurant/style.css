@@ -63,7 +63,34 @@ h2{
     color:#fff;
     background-color: #5CB85C;
     width: 80px;
-    height:40px;
+    height:30px;
     border-radius:5px;
-    border-
+    font-size: 18px;
+    
+}
+
+.eliminar{
+    color:#fff;
+    background-color: rgb(207, 34, 34);
+    width: 80px;
+    height:30px;
+    border-radius:5px;
+    font-size: 18px;
+    
+}
+
+.boton{
+    color:#fff;
+    background-color: rgb(34, 95, 207);
+    width: 120px;
+    height:30px;
+    border-radius:5px;
+    font-size: 15px;
+    
+}
+
+.texto{
+    border: 2px solid rgb(192, 192, 192);
+    height: 30px;
+    border-radius: 5px;
 }

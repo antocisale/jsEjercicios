@@ -8,4 +8,6 @@ class Mesa{
     }
 }
 
-module.exports=Mesa;
+try {
+    module.exports = Mesa;
+ } catch (e) {}
