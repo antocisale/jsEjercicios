@@ -1,5 +1,5 @@
 const Mesa = require('./mesas.js'),
-    mesasActivas = require('./mesasactivas.js');
+    mesasActivas = require('./mesasactivas.js/');
 
 
 

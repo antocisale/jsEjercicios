@@ -1,9 +1,9 @@
 class Mesa{
-    constructor(id, cuenta){
+    constructor(id, cuenta = 0){
         this.id = id;
-        if(cuenta == undefined){
+/*         if(cuenta == undefined){
             cuenta = 0;
-        }
+        } */
         this.cuenta = cuenta;
     }
 }
