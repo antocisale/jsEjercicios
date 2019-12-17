@@ -61,7 +61,7 @@ const mesasActivas = {
         mesaNuevaNro.innerHTML = mesa.id;
 
         let mesaNuevaCuenta = document.createElement("td");
-        mesaNuevaCuenta.innerHTML = `$ ${mesa.cuenta}`;
+        mesaNuevaCuenta.innerHTML = `$ ${mesa.cuenta.precio}`;
 
         let mesaNuevaBotonCerrar = document.createElement("td");
         let botonCerrar = this.addBotonCerrar();
@@ -87,4 +87,4 @@ botonAgregarMesa.addEventListener("click", ()=>{
 
 try {
     module.exports = mesasActivas;
- } catch (e) {}
+} catch (e) {}
