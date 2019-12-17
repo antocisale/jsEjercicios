@@ -46,11 +46,14 @@ const mesasActivas = {
         let newBotonEliminar = document.createElement("button");
         newBotonEliminar.innerHTML = "Eliminar";
         newBotonEliminar.classList.add("eliminar");
+        newBotonEliminar.addEventListener("click",()=>{
+            newBotonEliminar.parentElement.parentElement.remove();
+        });
         return newBotonEliminar;
     },
 
     agregarMesaAlHTML: function(mesa){
-        let list = document.querySelector("#tabla");
+        let list = document.querySelector("#tablaMesasActivas");
         let mesaNueva = document.createElement("tr");
         mesaNueva.classList.add("filas");
 
@@ -76,8 +79,8 @@ const mesasActivas = {
     }
 };
 
-let boton = document.querySelector("#agregar");
-boton.addEventListener("click", ()=>{
+let botonAgregarMesa = document.querySelector("#agregarMesa");
+botonAgregarMesa.addEventListener("click", ()=>{
     mesasActivas.agregar(document.querySelector("#txtMesa").value);
     return document.querySelector("#txtMesa").value ="";
 });

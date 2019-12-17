@@ -19,24 +19,45 @@
             <h2 class="margen">Mesas</h2>
         </header>
         <article class="art">
-            <table class="tabla" id ="tabla">
+            <table class="tabla" id ="tablaMesasActivas">
                 <tr class="filas">
                     <th>Numero de Mesa</th>
                     <th>Cuenta</th>
                     <th>Cerrar Mesa</th>
                     <th>Eliminar Mesa</th>
                 </tr>
-
-
             </table>
         </article>
         <article class ="art">
             <form>
                 <input type="text" class="texto" id="txtMesa">
-                <input type="button" value="Agregar Mesa" class ="boton" id="agregar">
+                <input type="button" value="Agregar Mesa" class ="boton" id="agregarMesa">
             </form>
         </article>
     </section>
+    <section class="seccion">
+            <header class="sec-encabezado">
+                <h2 class="margen">Menú</h2>
+            </header>
+            <article class="art">
+                <table class="tabla" id="tablaMenu">
+                    <tr class="filas">
+                        <th>ID</th>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>Eliminar Producto</th>
+                    </tr>
+                </table>
+            </article>
+            <article class ="art">
+                <form>
+                    <input type="text" class="texto" id="txtProducto" placeholder="Nombre del Producto">
+                    <input type="text" class="texto" id="productoPrecio" placeholder="Precio">
+                    <input type="button" value="Agregar Producto" class ="boton" id="agregarProducto">
+                </form>
+            </article>
+    </section>
+
     <footer>
         <script src="js/mesas.js"></script>
         <script src="js/mesasactivas.js"></script>
