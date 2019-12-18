@@ -12,6 +12,7 @@ const listaProductos = {
         let productoNuevo = new Producto(producto, precio, id);
         this.lista.push(productoNuevo);
         this.agregarProductoAlHTML(productoNuevo);
+        this.agregarProductoParaCuentaMesa(productoNuevo);
     },
 
     eliminar: function (producto) {
@@ -33,6 +34,7 @@ const listaProductos = {
 
     agregarProductoAlHTML: function (producto) {
         let list = document.querySelector("#tablaMenu");
+
         let productoNuevo = document.createElement("tr");
         productoNuevo.classList.add("filas");
 
@@ -54,7 +56,28 @@ const listaProductos = {
         productoNuevo.appendChild(productoNuevoPrecio);
         productoNuevo.appendChild(productoNuevoBotonEliminar);
         list.appendChild(productoNuevo);
+    },
+    
+    agregarProductoParaCuentaMesa: function(producto){
+        let list = document.querySelector("#tablaCargaProductos");
+    
+        let productoNuevo = document.createElement("tr");
+        productoNuevo.classList.add("filas");
+    
+        let productoNuevoNombre = document.createElement("td");
+        productoNuevoNombre.innerHTML = producto.producto;
+    
+        let productoNuevoCantidad = document.createElement("td");
+        let cantidad = document.createElement("input");
+        cantidad.setAttribute("type", "text");
+        productoNuevoCantidad.appendChild(cantidad);
+    
+        productoNuevo.appendChild(productoNuevoNombre);
+        productoNuevo.appendChild(productoNuevoCantidad);
+        list.appendChild(productoNuevo)
     }
+
+
 };
 
 let botonAgregarProducto = document.querySelector("#agregarProducto");

@@ -59,7 +59,8 @@ const mesasActivas = {
 
         let mesaNuevaNro = document.createElement("td");
         mesaNuevaNro.innerHTML = mesa.id;
-
+        mesaNuevaNro.id=`mesa-numero-${mesa.id}`;
+        
         let mesaNuevaCuenta = document.createElement("td");
         mesaNuevaCuenta.innerHTML = `$ ${mesa.cuenta.precio}`;
 
@@ -76,6 +77,7 @@ const mesasActivas = {
         mesaNueva.appendChild(mesaNuevaBotonCerrar);
         mesaNueva.appendChild(mesaNuevaBotonEliminar);
         list.appendChild(mesaNueva);
+        selectorDeMesasActivas(mesaNuevaNro.id);
     }
 };
 
@@ -84,6 +86,13 @@ botonAgregarMesa.addEventListener("click", ()=>{
     mesasActivas.agregar(document.querySelector("#txtMesa").value);
     return document.querySelector("#txtMesa").value ="";
 });
+
+const selectorDeMesasActivas = (mesa)=>{
+    let selector = document.querySelector("#mesaCargaCuenta");
+    let elemLista = document.createElement("option");
+        elemLista.innerHTML=mesa;
+        selector.appendChild(elemLista);
+}
 
 try {
     module.exports = mesasActivas;
