@@ -66,10 +66,12 @@ const listaProductos = {
     
         let productoNuevoNombre = document.createElement("td");
         productoNuevoNombre.innerHTML = producto.producto;
+        productoNuevoNombre.id = producto.id;
     
         let productoNuevoCantidad = document.createElement("td");
         let cantidad = document.createElement("input");
         cantidad.setAttribute("type", "text");
+        cantidad.classList.add("texto");
         productoNuevoCantidad.appendChild(cantidad);
     
         productoNuevo.appendChild(productoNuevoNombre);

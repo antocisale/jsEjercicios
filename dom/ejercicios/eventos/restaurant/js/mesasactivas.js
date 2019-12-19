@@ -59,7 +59,7 @@ const mesasActivas = {
 
         let mesaNuevaNro = document.createElement("td");
         mesaNuevaNro.innerHTML = mesa.id;
-        mesaNuevaNro.id=`mesa-numero-${mesa.id}`;
+        mesaNuevaNro.id=`${mesa.id}`;
         
         let mesaNuevaCuenta = document.createElement("td");
         mesaNuevaCuenta.innerHTML = `$ ${mesa.cuenta.precio}`;
@@ -91,6 +91,7 @@ const selectorDeMesasActivas = (mesa)=>{
     let selector = document.querySelector("#mesaCargaCuenta");
     let elemLista = document.createElement("option");
         elemLista.innerHTML=mesa;
+        elemLista.id = mesa;
         selector.appendChild(elemLista);
 }
 
